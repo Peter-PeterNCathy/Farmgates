@@ -1,9 +1,9 @@
 <?php
 
-if ( ! function_exists('farmgate_post_type') ) {
+if ( ! function_exists('visitfarmgates_post_type') ) {
 
 // Register Custom Post Type
-function farmgate_post_type() {
+function visitfarmgates_post_type() {
 
 	$labels = array(
 		'name'                  => _x( 'Farmgates', 'Post Type General Name', 'text_domain' ),
@@ -38,7 +38,7 @@ function farmgate_post_type() {
 		'label'                 => __( 'Farmgate', 'text_domain' ),
 		'description'           => __( 'A farmgate information page.', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail', ),
+		'supports'              => array( 'title', 'editor', 'thumbnail' ),
 		'taxonomies'            => array( 'state', 'region' ),
 		'hierarchical'          => false,
 		'public'                => true,
@@ -57,14 +57,14 @@ function farmgate_post_type() {
 	register_post_type( 'farmgate', $args );
 
 }
-add_action( 'init', 'farmgate_post_type', 0 );
+add_action( 'init', 'visitfarmgates_post_type', 0 );
 
 }
 
-if ( ! function_exists( 'region_taxonomy' ) ) {
+if ( ! function_exists( 'visitfarmgates_region_taxonomy' ) ) {
 
 // Register Custom Taxonomy
-function region_taxonomy() {
+function visitfarmgates_region_taxonomy() {
 
 	$labels = array(
 		'name'                       => _x( 'Regions', 'Taxonomy General Name', 'text_domain' ),
@@ -100,9 +100,78 @@ function region_taxonomy() {
 	register_taxonomy( 'region', array( 'farmgate' ), $args );
 
 }
-add_action( 'init', 'region_taxonomy', 0 );
+add_action( 'init', 'visitfarmgates_region_taxonomy', 0 );
 
 }
 
+
+if ( ! function_exists( 'visitfarmgates_products' ) ) {
+
+// Register Custom Meta box
+function visitfarmgates_products() {
+
+	add_meta_box(
+        'farmgate_products',
+        'Products',
+        'visitfarmgates_products_meta_box',
+        'farmgate'
+    );
+
+}
+add_action( 'add_meta_boxes', 'visitfarmgates_products', 0 );
+
+}
+
+
+if ( ! function_exists( 'visitfarmgates_products_metabox' ) ) {
+
+// Register Custom Meta box
+function visitfarmgates_products_meta_box( $post ) {
+
+    wp_nonce_field( 'visitfarmgates_products_meta_box', 'visitfarmgates_products_meta_box_nonce' );
+    $value = get_post_meta( $post->ID, '_farmgate_products', true );
+
+    ?>
+
+    <label for="farmgate_products"></label>
+    <input type="text" id="farmgate_products" name="farmgate_products" value="<?php echo esc_attr( $value ); ?>" placeholder="Enter Product Ids" >
+
+    <?php
+
+}
+
+}
+
+
+if ( ! function_exists( 'visitfarmgates_products_save_meta_box' ) ) {
+function visitfarmgates_products_save_meta_box($post_id){
+
+    // For safe
+    // if sending a hidden content (provent sent by others)
+    if ( ! isset( $_POST['visitfarmgates_products_meta_box_nonce'] ) ) {
+        return;
+    }
+    // if the value is the same as previous one
+    if ( ! wp_verify_nonce( $_POST['visitfarmgates_products_meta_box_nonce'], 'visitfarmgates_products_meta_box' ) ) {
+        return;
+    }
+    // 判断该用户是否有权限
+    // if the current user has permission
+    if ( ! current_user_can( 'edit_post', $post_id ) ) {
+        return;
+    }
+
+    // if it is empty
+    if ( ! isset( $_POST['farmgate_products'] ) ) {
+        return;
+    }
+
+    $farmgate_products = sanitize_text_field( $_POST['farmgate_products'] );
+    update_post_meta( $post_id, '_farmgate_products', $farmgate_products );
+
+}
+add_action( 'save_post', 'visitfarmgates_products_save_meta_box' );
+
+}
 
 ?>
