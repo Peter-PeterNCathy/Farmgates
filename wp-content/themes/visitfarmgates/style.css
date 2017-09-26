@@ -847,3 +847,68 @@ object {
 .gallery-caption {
 	display: block;
 }
+
+
+/*--------------------------------------------------------------
+## 
+--------------------------------------------------------------*/
+.product_tax {
+    border: 1px solid #f2f2f2;
+    border-radius: 10px;
+}
+
+.product_tax .title-background {
+    background-position: center;
+    background-size: contain;
+    text-align: center;
+    background-repeat: no-repeat;
+}
+
+.product_tax .title {
+    line-height: 120px;
+    color: white;
+}
+
+.product_tax .products {
+	font-style: italic;
+}
+
+.product_tax .description {
+	color: #828282;
+}
+
+.product_tax .browse {
+    text-align: center;
+	color: #56ccf2;
+}
+
+.display-posts-listing {
+	list-style: none;
+}
+
+.display-posts-listing .listing-item:nth-child(odd) .image { 
+	float:right; 
+}
+.display-posts-listing .listing-item:nth-child(even) .image { 
+	float:left; 
+}
+
+.display-posts-listing .listing-item {
+	float: left;
+}
+
+.display-posts-listing .image {
+	width: 50%;
+    text-align: -webkit-center;
+}
+
+.display-posts-listing .title {
+	font-size: x-large;
+    color: #828282;
+}
+
+.display-posts-listing .excerpt {
+    color: #828282;
+    font-weight: lighter;
+}
+

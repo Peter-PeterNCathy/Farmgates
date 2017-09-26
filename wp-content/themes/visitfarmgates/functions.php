@@ -326,6 +326,7 @@ add_action( 'save_post', 'visitfarmgates_products_save_meta_box' );
 
 // display specific taxonomy
 function be_display_taxonomies_shortcode( $atts ) {
+
     $a = shortcode_atts( array(
 		'post_type'            => 'post',
 		'tax_term'             => false,
@@ -336,6 +337,7 @@ function be_display_taxonomies_shortcode( $atts ) {
     $tax_term             = sanitize_text_field( $a['tax_term'] );
 	$taxonomy             = sanitize_key( $a['taxonomy'] );
 
+/***
 	// Set up initial query for post
 	$args = array(
 		'post_type'           => $post_type,
@@ -383,18 +385,18 @@ function be_display_taxonomies_shortcode( $atts ) {
 
 				}
 
-				/* Restore original Post Data */
+				// Restore original Post Data 
 				$query_farmgates->wp_reset_postdata();
 			}
 		}
 
-		/* Restore original Post Data */
+		// Restore original Post Data 
 		$listing->wp_reset_postdata();
 	} else {
 		// no posts found
 	}
 
-	return $inner;
+	**/
 
 
 $term = get_term_by('slug', $tax_term, $taxonomy);
@@ -403,10 +405,22 @@ $term->description;
 $term->count; 
 $img_id = get_term_meta($term->term_id, 'thumbnail_id', true);
 $img_url = wp_get_attachment_url( $img_id );
-$browse = get_term_link($term->term_id, $taxonomy);
+$browse_link = get_term_link($term->term_id, $taxonomy);
 
 
-    return "<img width='64px' height='64px' src='" . $img_url . "'/>";
+	$inner = '';
+	$title_bg_open = '<div class="title-background" style="background-image:url(' . $img_url . ')">';
+	$title = '<span class="title">' . $term->name . '</span>';
+	$title_bg_close = '</div>';
+	$desc_products_num = '<span class="products">' . $term->count . '</span>';
+	$term->description = ' products are provided by local farms.';
+	$desc = '<div class="description">' . $desc_products_num . $term->description . '</div>';
+	$browse = '<div class="browse"><a href=' . $browse_link . '>Browse</a></div>';
+	
+	$inner = $title_bg_open . $title . $title_bg_close . $desc . $browse;
+	$output = '<div class="product_tax">' . $inner . '</div>';
+
+	return $output;
 }
 add_shortcode('display-taxonomies', 'be_display_taxonomies_shortcode');
 
