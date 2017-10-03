@@ -285,19 +285,20 @@ add_action( 'add_meta_boxes', 'visitfarmgates_products', 0 );
 function visitfarmgates_products_meta_box( $post ) {
 
     wp_nonce_field( 'visitfarmgates_products_meta_box', 'visitfarmgates_products_meta_box_nonce' );
-    $value = get_post_meta( $post->ID, '_farmgate_products', true );
+    $value = get_post_meta( $post->ID, 'farmgate_products', true );
 
     ?>
 
     <label for="farmgate_products"></label>
     <input type="text" id="farmgate_products" name="farmgate_products" value="<?php echo esc_attr( $value ); ?>" placeholder="Enter Product Ids" >
+    <br>
+    <div>Separate products with commas</div>
 
     <?php
 
 }
 
 function visitfarmgates_products_save_meta_box( $post_id ) {
-
     // For safe
     // if sending a hidden content (provent sent by others)
     if ( ! isset( $_POST['visitfarmgates_products_meta_box_nonce'] ) ) {
@@ -307,7 +308,7 @@ function visitfarmgates_products_save_meta_box( $post_id ) {
     if ( ! wp_verify_nonce( $_POST['visitfarmgates_products_meta_box_nonce'], 'visitfarmgates_products_meta_box' ) ) {
         return;
     }
-    // 判断该用户是否有权限
+
     // if the current user has permission
     if ( ! current_user_can( 'edit_post', $post_id ) ) {
         return;

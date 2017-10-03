@@ -850,7 +850,7 @@ object {
 
 
 /*--------------------------------------------------------------
-## 
+## front page
 --------------------------------------------------------------*/
 .product_tax {
     border: 1px solid #f2f2f2;
@@ -910,5 +910,115 @@ object {
 .display-posts-listing .excerpt {
     color: #828282;
     font-weight: lighter;
+}
+
+
+/*--------------------------------------------------------------
+## taxonomy page
+--------------------------------------------------------------*/
+.tax-title {
+
+}
+
+.tax-desc {
+
+}
+
+.sub-tax {
+
+}
+
+.sub-tax-item {
+
+}
+
+.sub-tax-title {
+
+}
+
+.sub-tax-products {
+
+}
+
+.sub-tax-product {
+	position: relative;
+}
+
+.sub-tax-product-image {
+
+}
+
+.sub-tax-product-title {
+
+}
+
+.sub-tax-product-farm-title {
+	position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.sub-tax-product-farm-link {
+
+}
+
+.single-farm .single-image {
+
+}
+
+.single-farm .single-title {
+
+}
+
+.single-farm .single-left {
+
+}
+
+.single-left .location {
+
+}
+
+.single-left .location-title {
+
+}
+
+.single-left .contact {
+
+}
+
+.single-left .contact-title {
+
+}
+
+.single-left .hours {
+
+}
+
+.single-left .hours-title {
+
+}
+
+.single-farm .single-right {
+
+}
+
+.single-right .single-content {
+
+}
+
+.single-right .single-products {
+
+}
+
+.single-right .single-product {
+
+}
+
+.single-right .single-product-img {
+
+}
+
+.single-farm .single-product-title {
+
 }
 
