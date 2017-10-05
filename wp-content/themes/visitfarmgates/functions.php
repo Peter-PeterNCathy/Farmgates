@@ -425,6 +425,57 @@ $browse_link = get_term_link($term->term_id, $taxonomy);
 }
 add_shortcode('display-taxonomies', 'be_display_taxonomies_shortcode');
 
+function vf_display_products( $term_id ) {
+	$args = array(
+	'post_type' => 'product',
+	'tax_query' => array(
+			array(
+				'taxonomy'         => 'product_cat',
+				'field'            => 'term_id',
+				'terms'            => $term_id,
+			)
+		)
+	);
+
+	$child_posts_query = new WP_Query( $args );
+
+	echo '<ul class="sub-tax-products">';
+	while ( $child_posts_query->have_posts() ) {
+		$child_posts_query->the_post();
+		echo '<li class="sub-tax-product">';
+
+		echo '<div class="sub-tax-product-image">';
+		the_post_thumbnail();
+		echo '</div>';
+
+		echo '<div class="sub-tax-product-title">';
+		the_title();
+		echo '</div>';
+
+		// query relevant farm
+		$args_farmgates = array(
+			'post_type' => 'farmgate',
+			'meta_key'	=> 'farmgate_products',
+			'meta_value' => get_the_ID(),
+		);
+		$query_farmgates = new WP_Query( $args_farmgates );
+		if ($query_farmgates->have_posts()) {
+			$query_farmgates->the_post();
+
+			echo '<div class="sub-tax-product-farm-title">';
+			the_title();
+			echo '</div>';
+
+			echo '<a class="sub-tax-product-farm-link" href=' . get_permalink() . '>Visit Farm</a>';
+		}
+		$query_farmgates->wp_reset_query();
+
+		echo '</li>';
+	}
+	$child_posts_query->wp_reset_query();
+	echo '</ul>';
+}
+
 
 /**
  * Implement the Custom Header feature.

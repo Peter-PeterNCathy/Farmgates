@@ -21,9 +21,9 @@ get_header(); ?>
 			the_post_thumbnail();
 			echo '</div>';
 
-			echo '<div class="single-title">';
+			echo '<h2 class="single-title">';
 			the_title();
-			echo '</div>';
+			echo '</h2>';
 
 			echo '<div class="single-left">';
 			echo '<div class="location"><span class="location-title">Location:</span><br>';
