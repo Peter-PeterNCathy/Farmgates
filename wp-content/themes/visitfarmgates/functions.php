@@ -285,19 +285,20 @@ add_action( 'add_meta_boxes', 'visitfarmgates_products', 0 );
 function visitfarmgates_products_meta_box( $post ) {
 
     wp_nonce_field( 'visitfarmgates_products_meta_box', 'visitfarmgates_products_meta_box_nonce' );
-    $value = get_post_meta( $post->ID, '_farmgate_products', true );
+    $value = get_post_meta( $post->ID, 'farmgate_products', true );
 
     ?>
 
     <label for="farmgate_products"></label>
     <input type="text" id="farmgate_products" name="farmgate_products" value="<?php echo esc_attr( $value ); ?>" placeholder="Enter Product Ids" >
+    <br>
+    <div>Separate products with commas</div>
 
     <?php
 
 }
 
 function visitfarmgates_products_save_meta_box( $post_id ) {
-
     // For safe
     // if sending a hidden content (provent sent by others)
     if ( ! isset( $_POST['visitfarmgates_products_meta_box_nonce'] ) ) {
@@ -307,7 +308,7 @@ function visitfarmgates_products_save_meta_box( $post_id ) {
     if ( ! wp_verify_nonce( $_POST['visitfarmgates_products_meta_box_nonce'], 'visitfarmgates_products_meta_box' ) ) {
         return;
     }
-    // 判断该用户是否有权限
+
     // if the current user has permission
     if ( ! current_user_can( 'edit_post', $post_id ) ) {
         return;
@@ -423,6 +424,57 @@ $browse_link = get_term_link($term->term_id, $taxonomy);
 	return $output;
 }
 add_shortcode('display-taxonomies', 'be_display_taxonomies_shortcode');
+
+function vf_display_products( $term_id ) {
+	$args = array(
+	'post_type' => 'product',
+	'tax_query' => array(
+			array(
+				'taxonomy'         => 'product_cat',
+				'field'            => 'term_id',
+				'terms'            => $term_id,
+			)
+		)
+	);
+
+	$child_posts_query = new WP_Query( $args );
+
+	echo '<ul class="sub-tax-products">';
+	while ( $child_posts_query->have_posts() ) {
+		$child_posts_query->the_post();
+		echo '<li class="sub-tax-product">';
+
+		echo '<div class="sub-tax-product-image">';
+		the_post_thumbnail();
+		echo '</div>';
+
+		echo '<div class="sub-tax-product-title">';
+		the_title();
+		echo '</div>';
+
+		// query relevant farm
+		$args_farmgates = array(
+			'post_type' => 'farmgate',
+			'meta_key'	=> 'farmgate_products',
+			'meta_value' => get_the_ID(),
+		);
+		$query_farmgates = new WP_Query( $args_farmgates );
+		if ($query_farmgates->have_posts()) {
+			$query_farmgates->the_post();
+
+			echo '<div class="sub-tax-product-farm-title">';
+			the_title();
+			echo '</div>';
+
+			echo '<a class="sub-tax-product-farm-link" href=' . get_permalink() . '>Visit Farm</a>';
+		}
+		$query_farmgates->wp_reset_query();
+
+		echo '</li>';
+	}
+	$child_posts_query->wp_reset_query();
+	echo '</ul>';
+}
 
 
 /**

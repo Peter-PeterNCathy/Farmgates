@@ -397,8 +397,7 @@ table {
 --------------------------------------------------------------*/
 button,
 input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+input[type="reset"] {
 	border: 1px solid;
 	border-color: #ccc #ccc #bbb;
 	border-radius: 3px;
@@ -476,6 +475,26 @@ textarea {
 	width: 100%;
 }
 
+.search-form {
+	text-align: -webkit-center;
+}
+
+.search-field {
+	width: 35%;
+}
+
+.search-submit {
+	background-color: #f2c94c;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: #f2c94c;
+    color: white;
+    vertical-align: middle;
+    font-size: small;
+    padding: .6em 1em .4em;
+    line-height: 1;
+}
+
 /*--------------------------------------------------------------
 # Navigation
 --------------------------------------------------------------*/
@@ -486,6 +505,7 @@ a {
 	color: royalblue;
 }
 
+/*
 a:visited {
 	color: purple;
 }
@@ -493,6 +513,7 @@ a:visited {
 a:hover, a:focus, a:active {
 	color: midnightblue;
 }
+*/
 
 a:focus {
 	outline: thin dotted;
@@ -850,7 +871,7 @@ object {
 
 
 /*--------------------------------------------------------------
-## 
+## front page
 --------------------------------------------------------------*/
 .product_tax {
     border: 1px solid #f2f2f2;
@@ -912,3 +933,164 @@ object {
     font-weight: lighter;
 }
 
+
+/*--------------------------------------------------------------
+## taxonomy page
+--------------------------------------------------------------*/
+.tax-title {
+
+}
+
+.tax-desc {
+
+}
+
+.sub-tax {
+	list-style: none;
+	margin: 0;
+}
+
+.sub-tax-item {
+
+}
+
+.sub-tax-title {
+	background-color: #f4f7f6;
+}
+
+#sub-tax-title-text {
+	color: #102542;
+    text-decoration: none;
+    font-size: x-large;
+    line-height: 2;
+}
+
+.sub-tax-products {
+	list-style: none;
+}
+
+.sub-tax-product {
+	position: relative;
+	background-color: #f4f7f6;
+	width: 30%;
+}
+
+.sub-tax-product-image img {
+}
+
+.sub-tax-product-title {
+
+}
+
+.sub-tax-product-farm-title {
+	position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.sub-tax-product-farm-link {
+
+}
+
+.single-farm .single-image {
+
+}
+
+.single-farm .single-title {
+
+}
+
+.single-farm .single-left {
+	float: left;
+	width: 240px;
+}
+
+.single-left .location {
+
+}
+
+.single-left .location-title {
+
+}
+
+.single-left .contact {
+
+}
+
+.single-left .contact-title {
+
+}
+
+.single-left .hours {
+
+}
+
+.single-left .hours-title {
+
+}
+
+.single-farm .single-right {
+	float: right;
+	width: calc(100% - 260px);
+}
+
+.single-right .single-content {
+
+}
+
+.single-right .single-products {
+
+}
+
+.single-right .single-product {
+
+}
+
+.single-right .single-product-img {
+
+}
+
+.single-farm .single-product-title {
+
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.site-header {
+	background-color: #5c5346;
+}
+
+.custom-logo-link {
+	width: 64px;
+	height: 64px;
+	float: left;
+}
+
+.site-title {
+	float: left;
+	color: white;
+    text-decoration: none;
+    margin-left: 3px;
+    line-height: 64px;
+    font-size: x-large;
+    font-weight: lighter;
+}
+
+.site-operations {
+	float: right;
+    line-height: 64px;
+}
+
+.site-operation {
+	color: #f2c94c;
+}
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+@media (max-width: 375px) {
+	.site-title {
+		display: none;
+	}
+}
