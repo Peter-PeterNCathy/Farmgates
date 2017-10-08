@@ -338,75 +338,13 @@ function be_display_taxonomies_shortcode( $atts ) {
     $tax_term             = sanitize_text_field( $a['tax_term'] );
 	$taxonomy             = sanitize_key( $a['taxonomy'] );
 
-/***
-	// Set up initial query for post
-	$args = array(
-		'post_type'           => $post_type,
-	);
-
-
-	// If taxonomy attributes, create a taxonomy query
-	if ( !empty( $taxonomy ) && !empty( $tax_term ) ) {
-		
-		$tax_args = array(
-			'tax_query' => array(
-				array(
-					'taxonomy'         => $taxonomy,
-					'field'            => 'slug',
-					'terms'            => $tax_term,
-				)
-			)
-		);
-
-		$args = array_merge_recursive( $args, $tax_args );
-	}
-
-	$listing = new WP_Query( $args );
-
-	$inner = '';
-	// The Loop
-	if ( $listing->have_posts() ) {
-		
-		while ( $listing->have_posts() ) {
-			$listing->the_post();
-
-			$args_farmgates = array(
-				'post_type' => 'farmgate',
-				'meta_key'	=> 'farmgate_products',
-				'meta_value' => get_the_ID(),
-			);
-			$query_farmgates = new WP_Query( $args_farmgates );
-
-			if ( $query_farmgates->have_posts() ) {
-		
-				while ( $query_farmgates->have_posts() ) {
-					$query_farmgates->the_post();
-
-					$inner .= get_the_title();
-
-				}
-
-				// Restore original Post Data 
-				$query_farmgates->wp_reset_postdata();
-			}
-		}
-
-		// Restore original Post Data 
-		$listing->wp_reset_postdata();
-	} else {
-		// no posts found
-	}
-
-	**/
-
-
-$term = get_term_by('slug', $tax_term, $taxonomy);
-$term->name;
-$term->description;
-$term->count; 
-$img_id = get_term_meta($term->term_id, 'thumbnail_id', true);
-$img_url = wp_get_attachment_url( $img_id );
-$browse_link = get_term_link($term->term_id, $taxonomy);
+	$term = get_term_by('slug', $tax_term, $taxonomy);
+	$term->name;
+	$term->description;
+	$term->count; 
+	$img_id = get_term_meta($term->term_id, 'thumbnail_id', true);
+	$img_url = wp_get_attachment_url( $img_id );
+	$browse_link = get_term_link($term->term_id, $taxonomy);
 
 
 	$inner = '';
@@ -424,6 +362,117 @@ $browse_link = get_term_link($term->term_id, $taxonomy);
 	return $output;
 }
 add_shortcode('display-taxonomies', 'be_display_taxonomies_shortcode');
+
+// display region
+function be_display_regions_shortcode( $atts ) {
+	$taxonomy = 'region';
+
+	$terms_states = get_terms( array(
+	    'taxonomy' => 'region',
+	    'hide_empty' => false,
+	    'parent' => 0,
+	) );
+
+	$inner = '';
+	foreach ($terms_states as $state) {
+		$inner .= '<h3>' . $state->name . '</h3>';
+
+		$term_regions = get_terms( array(
+		    'taxonomy' => 'region',
+		    'hide_empty' => false,
+		    'parent' => $state->term_id,
+		) );
+
+		$wrapper_regions = '<ul>';
+		foreach ($term_regions as $region) {
+			$wrapper_region = '<li>';
+
+			$wrapper_region .= '<a href=' . get_term_link($region->term_id, $taxonomy) . '>' . $region->name . '</a>';
+
+			$args = array(
+			'post_type' => 'farmgate',
+			'tax_query' => array(
+					array(
+						'taxonomy'         => $taxonomy,
+						'field'            => 'term_id',
+						'terms'            => $region->term_id,
+					)
+				)
+			);
+
+			$fg_query = new WP_Query( $args );
+			while ( $fg_query->have_posts() ) {
+				$fg_query->the_post();
+
+				$farmgate_item .= '<div><a href=' . get_permalink() . '>' . get_the_title() . '</a></div>';
+
+				$wrapper_region .= $farmgate_item;
+			}
+			$fg_query->wp_reset_query();
+
+			$wrapper_region .= '</li>';
+
+			$wrapper_regions .= $wrapper_region;
+		}
+		$wrapper_regions .= '</ul>';
+
+		$inner .= $wrapper_regions;
+	}
+
+
+
+	return '<div>' . $inner . '</div>';
+
+}
+add_shortcode('display-regions', 'be_display_regions_shortcode');
+
+// display seaon
+function be_display_season_shortcode( $atts ) {
+	$a = shortcode_atts( array(
+		'spring'            => '',
+		'summer'            => '',
+		'autumn'            => '',
+		'winter'			=> '',
+		'all_year'			=> '',
+    ), $atts );
+
+    $spring_product_cats = explode(',', sanitize_text_field($a['spring']));
+    $summer_product_cats = explode(',', sanitize_text_field($a['summer']));
+    $autumn_product_cats = explode(',', sanitize_text_field($a['autumn']));
+    $winter_product_cats = explode(',', sanitize_text_field($a['winter']));
+    $all_year_product_cats = explode(',', sanitize_text_field($a['all_year']));
+
+    $taxonomy = 'product_cat';
+
+	$seasons = '';
+    $seasons .= '<ul>';
+
+    $seasons .= '<li>Spring';
+    $output_spring = '<ul>';
+    foreach ($spring_product_cats as $spring_product_slug) {
+    	$term = get_term_by('slug', $spring_product_slug, $taxonomy);
+		
+		$output_spring .= '<li><a href=' . get_term_link($term->term_id, $taxonomy) . '>' . $term->name . '</a></li>';
+    }
+    $output_spring .= '</ul>';
+    $seasons .= $output_spring . '</li>';
+
+	$seasons .= '<li>Summer';
+    $seasons .= '</li>';
+
+	$seasons .= '<li>Autumn';
+    $seasons .= '</li>';
+
+	$seasons .= '<li>Winter';
+    $seasons .= '</li>';
+
+	$seasons .= '<li>All Year';
+    $seasons .= '</li>';
+    $seasons .= '</ul>';
+    
+    return '<div>' . $seasons . '</div>';
+}
+add_shortcode('display-season', 'be_display_season_shortcode');
 
 function vf_display_products( $term_id ) {
 	$args = array(
