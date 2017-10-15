@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+		<main id="main" class="tax-main">
 		
 		<?php
 		if ( have_posts() ) : 
@@ -23,7 +23,7 @@ get_header(); ?>
 			<header class="page-header">
 				<?php
 				$title = single_cat_title( '', false );
-				echo '<h1 class="tax-title">' . $title . '</h1>';
+				echo '<h2 class="tax-title">' . $title . '</h2>';
 				the_archive_description( '<div class="tax-desc">', '</div>' );
 				?>
 			</header><!-- .page-header -->

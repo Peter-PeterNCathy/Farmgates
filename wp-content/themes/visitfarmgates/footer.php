@@ -14,19 +14,21 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
+		<hr>
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'visitfarmgates' ) ); ?>"><?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'visitfarmgates' ), 'WordPress' );
-			?></a>
-			<span class="sep"> | </span>
-			<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'visitfarmgates' ), 'visitfarmgates', '<a href="http://underscores.me/">Peter</a>' );
-			?>
+			<div class="footer-copyright">Copyright © 2017 Mt. Paul PTY Ltd.</div>
+			<div class="footer-copyright">
+				<a href="#">About</a>
+				<span class="sep"> | </span>
+				<a href="#">Privacy</a>
+				<span class="sep"> | </span>
+				<a href="#">Terms</a>
+			</div>
+			
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
+
 
 <?php wp_footer(); ?>
 

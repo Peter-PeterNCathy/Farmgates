@@ -340,7 +340,6 @@ function be_display_taxonomies_shortcode( $atts ) {
 
 	$term = get_term_by('slug', $tax_term, $taxonomy);
 	$term->name;
-	$term->description;
 	$term->count; 
 	$img_id = get_term_meta($term->term_id, 'thumbnail_id', true);
 	$img_url = wp_get_attachment_url( $img_id );
@@ -351,10 +350,17 @@ function be_display_taxonomies_shortcode( $atts ) {
 	$title_bg_open = '<div class="title-background" style="background-image:url(' . $img_url . ')">';
 	$title = '<span class="title">' . $term->name . '</span>';
 	$title_bg_close = '</div>';
-	$desc_products_num = '<span class="products">' . $term->count . '</span>';
-	$term->description = ' products are provided by local farms.';
-	$desc = '<div class="description">' . $desc_products_num . $term->description . '</div>';
-	$browse = '<div class="browse"><a href=' . $browse_link . '>Browse</a></div>';
+
+	$desc_content = $term->description;
+	$desc_length = 60;
+	if (strlen($desc_content) > $desc_length) {
+		$desc_content = substr($desc_content, 0, $desc_length);
+		$desc_content .= '...';
+	}
+	$desc = '<div class="description">' . $desc_content . '</div>';
+	
+	$desc_products_num = '<span class="products"> ' . $term->count . ' products</span>';
+	$browse = '<div class="browse"><a href=' . $browse_link . '>Browse</a>' . $desc_products_num . '</div>';
 	
 	$inner = $title_bg_open . $title . $title_bg_close . $desc . $browse;
 	$output = '<div class="product_tax">' . $inner . '</div>';
@@ -365,30 +371,29 @@ add_shortcode('display-taxonomies', 'be_display_taxonomies_shortcode');
 
 // display region
 function be_display_regions_shortcode( $atts ) {
+	// header
+	$header = '<header><h1 class="entry-header">Explore Farmgates in Specific Regions<h1></header>';
+	
 	$taxonomy = 'region';
 
 	$terms_states = get_terms( array(
-	    'taxonomy' => 'region',
+	    'taxonomy' => $taxonomy,
 	    'hide_empty' => false,
 	    'parent' => 0,
 	) );
 
 	$inner = '';
 	foreach ($terms_states as $state) {
-		$inner .= '<h3>' . $state->name . '</h3>';
+		$inner .= '<h3 class="state_title">' . $state->name . '</h3>';
 
 		$term_regions = get_terms( array(
-		    'taxonomy' => 'region',
+		    'taxonomy' => $taxonomy,
 		    'hide_empty' => false,
 		    'parent' => $state->term_id,
 		) );
 
-		$wrapper_regions = '<ul>';
+		$wrapper_regions = '<ul class="regions-list">';
 		foreach ($term_regions as $region) {
-			$wrapper_region = '<li>';
-
-			$wrapper_region .= '<a href=' . get_term_link($region->term_id, $taxonomy) . '>' . $region->name . '</a>';
-
 			$args = array(
 			'post_type' => 'farmgate',
 			'tax_query' => array(
@@ -401,18 +406,25 @@ function be_display_regions_shortcode( $atts ) {
 			);
 
 			$fg_query = new WP_Query( $args );
+
+			if ( $fg_query->have_posts() ) {
+				$wrapper_region = '<li>';
+				$wrapper_region .= '<a class="region_title" href=' . get_term_link($region->term_id, $taxonomy) . '>' . $region->name . '</a>';
+			}
+
 			while ( $fg_query->have_posts() ) {
 				$fg_query->the_post();
 
-				$farmgate_item .= '<div><a href=' . get_permalink() . '>' . get_the_title() . '</a></div>';
-
-				$wrapper_region .= $farmgate_item;
+				$wrapper_region .= '<div><a class="region_farmgate" href=' . get_permalink() . '>Visit ' . get_the_title() . '</a></div>';
 			}
+
+			if ( $fg_query->have_posts() ) {
+				$wrapper_region .= '</li>';
+				$wrapper_regions .= $wrapper_region;
+			}
+
 			$fg_query->wp_reset_query();
 
-			$wrapper_region .= '</li>';
-
-			$wrapper_regions .= $wrapper_region;
 		}
 		$wrapper_regions .= '</ul>';
 
@@ -421,13 +433,16 @@ function be_display_regions_shortcode( $atts ) {
 
 
 
-	return '<div>' . $inner . '</div>';
+	return '<div class="display-content">' . $header . $inner . '</div>';
 
 }
 add_shortcode('display-regions', 'be_display_regions_shortcode');
 
 // display seaon
 function be_display_season_shortcode( $atts ) {
+	// header
+	$header = '<header><h1 class="entry-header">Explore Farmgates in Different Season<h1></header>';
+	
 	$a = shortcode_atts( array(
 		'spring'            => '',
 		'summer'            => '',
@@ -445,34 +460,96 @@ function be_display_season_shortcode( $atts ) {
     $taxonomy = 'product_cat';
 
 	$seasons = '';
-    $seasons .= '<ul>';
+    $seasons .= '<ul class="season-list">';
 
-    $seasons .= '<li>Spring';
-    $output_spring = '<ul>';
+    $seasons .= '<li class="season-title"><h3>Spring</h3>';
+    $output_spring = '<ul class="season-products">';
     foreach ($spring_product_cats as $spring_product_slug) {
     	$term = get_term_by('slug', $spring_product_slug, $taxonomy);
 		
-		$output_spring .= '<li><a href=' . get_term_link($term->term_id, $taxonomy) . '>' . $term->name . '</a></li>';
+		$output_spring .= '<li><a class="season-products" href=' . get_term_link($term->term_id, $taxonomy) . '>' . $term->name . '</a></li>';
     }
     $output_spring .= '</ul>';
     $seasons .= $output_spring . '</li>';
 
-	$seasons .= '<li>Summer';
+	$seasons .= '<li class="season-title"><h3>Summer</h3>';
     $seasons .= '</li>';
 
-	$seasons .= '<li>Autumn';
+	$seasons .= '<li class="season-title"><h3>Autumn</h3>';
     $seasons .= '</li>';
 
-	$seasons .= '<li>Winter';
+	$seasons .= '<li class="season-title"><h3>Winter</h3>';
     $seasons .= '</li>';
 
-	$seasons .= '<li>All Year';
+	$seasons .= '<li class="season-title"><h3>All Year</h3>';
     $seasons .= '</li>';
     $seasons .= '</ul>';
     
-    return '<div>' . $seasons . '</div>';
+    return '<div class="display-content">' . $header . $seasons . '</div>';
 }
 add_shortcode('display-season', 'be_display_season_shortcode');
+
+function be_display_produce_shortcode( $atts ) {
+	// header
+	$header = '<header><h1 class="entry-header">Find Farmgates by Various Produces<h1></header>';
+	
+	$taxonomy = 'product_cat';
+
+	$terms_1st = get_terms( array(
+	    'taxonomy' => $taxonomy,
+	    'hide_empty' => true,
+	    'parent' => 0,
+	) );
+
+	$inner = '';
+	foreach ($terms_1st as $term_1st) {
+		$inner .= '<h3 class="term-1st-title">' . $term_1st->name . '</h3>';
+
+		$terms_2nd = get_terms( array(
+		    'taxonomy' => $taxonomy,
+		    'hide_empty' => true,
+		    'parent' => $term_1st->term_id,
+		) );
+
+		$wrapper_2nd = '<ul class="term-2nd-list">';
+		foreach ($terms_2nd as $term_2nd) {
+			$wrapper_2nd_item = '<li>';
+
+			$wrapper_2nd_item .= '<a class="term-2nd-title" href=' . get_term_link($term_2nd->term_id, $taxonomy) . '>' . $term_2nd->name . '</a>';
+
+			$args = array(
+			'post_type' => 'product',
+			'tax_query' => array(
+					array(
+						'taxonomy'         => $taxonomy,
+						'field'            => 'term_id',
+						'terms'            => $term_2nd->term_id,
+					)
+				)
+			);
+
+			$query = new WP_Query( $args );
+			while ( $query->have_posts() ) {
+				$query->the_post();
+
+				$wrapper_2nd_item .= '<div><a class="term-post" href=' . get_permalink() . '>' . get_the_title() . '</a></div>';
+			}
+			$query->wp_reset_query();
+
+			$wrapper_2nd_item .= '</li>';
+
+			$wrapper_2nd .= $wrapper_2nd_item;
+		}
+		$wrapper_2nd .= '</ul>';
+
+		$inner .= $wrapper_2nd;
+	}
+
+
+
+	return '<div class="display-content">' . $header . $inner . '</div>';
+}
+add_shortcode('display-produce', 'be_display_produce_shortcode');
 
 function vf_display_products( $term_id ) {
 	$args = array(
@@ -506,6 +583,7 @@ function vf_display_products( $term_id ) {
 			'post_type' => 'farmgate',
 			'meta_key'	=> 'farmgate_products',
 			'meta_value' => get_the_ID(),
+			'meta_compare'	=> 'LIKE',
 		);
 		$query_farmgates = new WP_Query( $args_farmgates );
 		if ($query_farmgates->have_posts()) {

@@ -1,4 +1,4 @@
-/** Wednesday 27th of September 2017 06:47:33 AM (core) **/
+/** Thursday 12th of October 2017 03:40:52 AM (core) **/
 
 #mega-menu-wrap-menu-1, #mega-menu-wrap-menu-1 #mega-menu-menu-1, #mega-menu-wrap-menu-1 #mega-menu-menu-1 ul.mega-sub-menu, #mega-menu-wrap-menu-1 #mega-menu-menu-1 li.mega-menu-item, #mega-menu-wrap-menu-1 #mega-menu-menu-1 a.mega-menu-link {
   -moz-transition: none;
@@ -49,7 +49,7 @@
   display: none;
 }
 #mega-menu-wrap-menu-1 {
-  background: #222;
+  background: #7f7567;
   -webkit-border-radius: 0px 0px 0px 0px;
   -moz-border-radius: 0px 0px 0px 0px;
   -ms-border-radius: 0px 0px 0px 0px;
@@ -60,6 +60,11 @@
   visibility: visible;
   text-align: left;
   padding: 0px 0px 0px 0px;
+}
+@media only screen and (max-width: 600px) {
+  #mega-menu-wrap-menu-1 #mega-menu-menu-1 {
+    background: #f4f7f6;
+  }
 }
 @media only screen and (max-width: 600px) {
   #mega-menu-wrap-menu-1 #mega-menu-menu-1 {
@@ -235,14 +240,14 @@
   }
 }
 #mega-menu-wrap-menu-1 #mega-menu-menu-1 > li.mega-menu-item.mega-toggle-on > a.mega-menu-link, #mega-menu-wrap-menu-1 #mega-menu-menu-1 > li.mega-menu-item > a.mega-menu-link:hover, #mega-menu-wrap-menu-1 #mega-menu-menu-1 > li.mega-menu-item > a.mega-menu-link:focus {
-  background: #333;
+  background: rgba(92, 83, 70, 0.5);
   color: #fff;
   font-weight: normal;
   text-decoration: none;
   border-color: #fff;
 }
 #mega-menu-wrap-menu-1 #mega-menu-menu-1 > li.mega-menu-item.mega-current-menu-item > a.mega-menu-link, #mega-menu-wrap-menu-1 #mega-menu-menu-1 > li.mega-menu-item.mega-current-menu-ancestor > a.mega-menu-link, #mega-menu-wrap-menu-1 #mega-menu-menu-1 > li.mega-menu-item.mega-current-page-ancestor > a.mega-menu-link {
-  background: #333;
+  background: rgba(92, 83, 70, 0.5);
   color: #fff;
   font-weight: normal;
   text-decoration: none;
@@ -266,7 +271,7 @@
   color: #fff;
   text-transform: none;
   text-decoration: none;
-  background: rgba(0, 0, 0, 0);
+  background: rgba(213, 221, 65, 0);
   -webkit-border-radius: 0px 0px 0px 0px;
   -moz-border-radius: 0px 0px 0px 0px;
   -ms-border-radius: 0px 0px 0px 0px;
@@ -278,7 +283,7 @@
 @media only screen and (max-width: 600px) {
   #mega-menu-wrap-menu-1 #mega-menu-menu-1 > li.mega-menu-item > a.mega-menu-link {
     text-align: left;
-    color: #fff;
+    color: #828282;
     font-size: 14px;
   }
 }
@@ -604,7 +609,7 @@
   border-right: 0px solid #fff;
   border-bottom: 0px solid #fff;
   padding: 0px 0px 0px 0px;
-  background: #f1f1f1;
+  background: #f4f7f6;
 }
 @media only screen and (max-width: 600px) {
   #mega-menu-wrap-menu-1 #mega-menu-menu-1 > li.mega-menu-flyout ul.mega-sub-menu {
@@ -622,8 +627,8 @@
 }
 #mega-menu-wrap-menu-1 #mega-menu-menu-1 > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item a.mega-menu-link {
   display: block;
-  background: #f1f1f1;
-  color: #666;
+  background: #f4f7f6;
+  color: #828282;
   font-family: inherit;
   font-size: 14px;
   font-weight: normal;
@@ -654,10 +659,10 @@
   }
 }
 #mega-menu-wrap-menu-1 #mega-menu-menu-1 > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item a.mega-menu-link:hover, #mega-menu-wrap-menu-1 #mega-menu-menu-1 > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item a.mega-menu-link:focus {
-  background: #ddd;
+  background: #f2c94c;
   font-weight: normal;
   text-decoration: none;
-  color: #666;
+  color: #fff;
 }
 #mega-menu-wrap-menu-1 #mega-menu-menu-1 > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item ul.mega-sub-menu {
   position: absolute;
@@ -767,7 +772,7 @@
   display: none;
   z-index: 1;
   cursor: pointer;
-  background: #222;
+  background: #7f7567;
   -webkit-border-radius: 2px 2px 2px 2px;
   -moz-border-radius: 2px 2px 2px 2px;
   -ms-border-radius: 2px 2px 2px 2px;

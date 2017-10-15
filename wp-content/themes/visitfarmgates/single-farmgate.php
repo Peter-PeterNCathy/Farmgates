@@ -25,25 +25,28 @@ get_header(); ?>
 			the_title();
 			echo '</h2>';
 
-			echo '<div class="single-left">';
-			echo '<div class="location"><span class="location-title">Location:</span><br>';
-			echo do_shortcode('[wp_places formattedAddress]') . '</div>';
-
-			echo '<div class="contact"><span class="contact-title">Contact:</span><br>';
-			echo '<div><span>Location:</span>' . do_shortcode('[wp_places formattedAddress]') . '</div>';
-			echo '<div><span>Phone:' . do_shortcode('[wp_places phoneNumber]') . '</span>&nbsp|&nbsp';
-			echo '<a href=' . do_shortcode('[wp_places website]') . '>Website'  . '</a></div>';
-			echo '</div>';
-
-			echo '<div class="hours"><span class="hours-title">Open Hours:</span><br>';
-			echo do_shortcode('[wp_places hours]') . '</div>';
-			echo '</div>';	// end left
-
-			echo '<div class="single-right">';
 			echo '<div class="single-content">';
 			the_content();
 			echo '</div>';
 
+			echo '<div class="single-left">';
+			echo '<div class="contact"><div class="contact-title">Contact</div>';
+			echo '<div class="contact-address">' . do_shortcode('[wp_places formattedAddress]') . '</div>';
+
+			echo '<div class="contact-hrwrapper"><hr class="contact-hr"></div>';
+
+			echo '<div class="contact-phone">Phone: ' . do_shortcode('[wp_places phoneNumber]') . '</div>';
+			echo '<div><a class="contact-website" href=' . do_shortcode('[wp_places website]') . '>Website'  . '</a>&nbsp|&nbsp';
+			$place_id = get_post_meta( get_the_ID(), 'wp_place_id', true );
+			echo '<a class="contact-directions" target="_blank" href=https://www.google.com/maps/dir/?api=1&destination_place_id=' . $place_id . '&destination=' . get_the_title() . '>Directions</a><div>';
+			
+			echo '</div>';
+
+			echo '<div class="contact-hours"><span class="hours-title">Open Hours:</span><br>';
+			echo do_shortcode('[wp_places hours]') . '</div>';
+			echo '</div>';	// end left
+
+			echo '<div class="single-right">';
 			// products
 			$product_ids = explode(',', get_post_meta( get_the_ID(), 'farmgate_products', true ));
 			echo '<ul class="single-products">';

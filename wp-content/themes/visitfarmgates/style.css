@@ -883,9 +883,10 @@ object {
 
 .product_tax .title-background {
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     text-align: center;
     background-repeat: no-repeat;
+
 }
 
 .product_tax .title {
@@ -895,10 +896,14 @@ object {
 
 .product_tax .products {
 	font-style: italic;
+    font-size: x-small;
 }
 
 .product_tax .description {
 	color: #828282;
+	font-size: smaller;
+    margin: 4px 8px;
+    font-weight: lighter;
 }
 
 .product_tax .browse {
@@ -919,6 +924,7 @@ object {
 
 .display-posts-listing .listing-item {
 	float: left;
+	width: 100%;
 }
 
 .display-posts-listing .image {
@@ -940,17 +946,23 @@ object {
 /*--------------------------------------------------------------
 ## taxonomy page
 --------------------------------------------------------------*/
-.tax-title {
+.tax-main {
+	padding: 0 20px;
+}
 
+.tax-title {
+	color: #102542;
 }
 
 .tax-desc {
-
+	font-size: small;
+    font-style: italic;
 }
 
 .sub-tax {
 	list-style: none;
 	margin: 0;
+	padding: 0;
 }
 
 .sub-tax-item {
@@ -959,26 +971,33 @@ object {
 
 .sub-tax-title {
 	background-color: #f4f7f6;
+	margin: 0.5em 0;
 }
 
 #sub-tax-title-text {
 	color: #102542;
     text-decoration: none;
-    font-size: x-large;
+    font-size: medium;
     line-height: 2;
 }
 
 .sub-tax-products {
 	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 .sub-tax-product {
 	position: relative;
 	background-color: #f4f7f6;
-	width: 30%;
+	display: inline-block;
+	margin: 0 5px;
+	text-align: -webkit-center;
 }
 
 .sub-tax-product-image img {
+	width: 150px;
+    height: 150px;
 }
 
 .sub-tax-product-title {
@@ -989,10 +1008,17 @@ object {
 	position: absolute;
     top: 0;
     left: 0;
+    background-color: #f87060;
+    padding: 2px 15px;
+    border-radius: 2px;
+    color: white;
+    font-size: smaller;
 }
 
 .sub-tax-product-farm-link {
-
+	color: #56ccf2;
+    text-decoration: none;
+    font-size: small;
 }
 
 .single-farm .single-image {
@@ -1076,17 +1102,104 @@ object {
     text-decoration: none;
     margin-left: 3px;
     line-height: 64px;
-    font-size: x-large;
+    font-size: xx-large;
     font-weight: lighter;
 }
 
 .site-operations {
 	float: right;
     line-height: 64px;
+	color: #f2c94c;
+    font-size: small;
 }
 
 .site-operation {
 	color: #f2c94c;
+	text-decoration: none;
+    font-size: small;
+}
+
+/* display */
+.display-content {
+	padding: 0 1em;
+}
+
+.term-1st-title {
+	color: #999;
+    font-style: italic;
+    margin-bottom: 0.3em;
+}
+
+.term-2nd-list {
+	list-style: none;
+    margin: 0;
+    padding: 0 0.5em;
+}
+
+.term-2nd-title {
+	color: #999;
+    font-size: medium;
+    text-decoration: none;
+}
+
+.term-post {
+	color: #666;
+    padding-left: 2em;
+    text-decoration: none;
+}
+
+/* region page */
+.state_title {
+	color: #999;
+    font-style: italic;
+    margin-bottom: 0.3em;
+}
+
+.regions-list {
+	list-style: none;
+    margin: 0;
+    padding: 0 0.5em;
+}
+
+.region_title {
+	color: #999;
+    font-size: medium;
+    text-decoration: none
+}
+
+.region_farmgate {
+	color: #666;
+	padding-left: 2em;
+    text-decoration: none
+}
+
+/* season page */
+.season-list {
+	list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.season-title {
+	color: #999;
+    font-style: italic;
+    margin-bottom: 0.3em;
+}
+
+.season-products {
+	list-style: none;
+    margin: 0;
+    padding: 0 0.5em;
+    text-decoration: none;
+    font-style: normal;
+    color: #666;
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+.footer-copyright {
+	text-align: center;
 }
 
 /*--------------------------------------------------------------
