@@ -23,7 +23,7 @@ get_header(); ?>
 			<header class="page-header">
 				<?php
 				$title = single_cat_title( '', false );
-				echo '<h2 class="tax-title">' . $title . '</h2>';
+				echo '<h1 class="tax-title">' . $title . '</h1>';
 				the_archive_description( '<div class="tax-desc">', '</div>' );
 				?>
 			</header><!-- .page-header -->

@@ -1047,11 +1047,35 @@ object {
 }
 
 .single-left .contact-title {
-
+	font-size: large;
+    font-weight: bold;
+    text-align: center;
 }
 
-.single-left .hours {
+.single-left .contact-address {
+	color: #666;
+    font-size: small;
+}
 
+.single-left .contact-hr {
+	margin: 0.3em;
+}
+
+.single-left .contact-phone,
+.single-left .contact-website,
+.single-left .contact-directions,
+.single-left .contact-hours {
+	font-size: medium;
+    color: #666;
+}
+
+.single-left .contact-hours ul {
+	white-space: nowrap;
+    list-style: none;
+    margin: 0 0.5em 0 1.2em;
+    padding: 0;
+    text-align: right;
+    font-size: smaller;
 }
 
 .single-left .hours-title {
@@ -1063,8 +1087,9 @@ object {
 	width: calc(100% - 260px);
 }
 
-.single-right .single-content {
-
+.single-content {
+	font-size: smaller;
+    color: #4a4a4a;
 }
 
 .single-right .single-products {
