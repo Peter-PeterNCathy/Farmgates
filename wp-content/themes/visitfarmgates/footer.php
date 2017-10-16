@@ -14,15 +14,13 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
-		<hr>
+		<?php if( function_exists('slbd_display_widgets') ) { echo slbd_display_widgets(); } ?>
 		<div class="site-info">
 			<div class="footer-copyright">Copyright © 2017 Mt. Paul PTY Ltd.</div>
-			<div class="footer-copyright">
-				<a href="#">About</a>
-				<span class="sep"> | </span>
-				<a href="#">Privacy</a>
-				<span class="sep"> | </span>
-				<a href="#">Terms</a>
+			<div class="footer-links">
+				<a class="footer-link" href="#">About</a>
+				<a class="footer-link" href="#">Privacy</a>
+				<a class="footer-link" href="#">Terms</a>
 			</div>
 			
 		</div><!-- .site-info -->

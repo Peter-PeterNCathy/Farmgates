@@ -117,7 +117,7 @@ add_action( 'widgets_init', 'visitfarmgates_widgets_init' );
  * Enqueue scripts and styles.
  */
 function visitfarmgates_scripts() {
-	wp_enqueue_style( 'visitfarmgates-style', get_stylesheet_uri(), array(), null );
+	wp_enqueue_style( 'visitfarmgates-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'visitfarmgates-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
