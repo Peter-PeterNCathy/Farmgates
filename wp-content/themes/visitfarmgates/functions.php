@@ -372,7 +372,8 @@ add_shortcode('display-taxonomies', 'be_display_taxonomies_shortcode');
 // display region
 function be_display_regions_shortcode( $atts ) {
 	// header
-	$header = '<header><h1 class="entry-header">Explore Farmgates in Specific Regions<h1></header>';
+	//$header = '<header><h1 class="entry-header">Explore Farmgates in Specific Regions<h1></header>';
+	$header = '';
 	
 	$taxonomy = 'region';
 
@@ -409,7 +410,7 @@ function be_display_regions_shortcode( $atts ) {
 
 			if ( $fg_query->have_posts() ) {
 				$wrapper_region = '<li>';
-				$wrapper_region .= '<a class="region_title" href=' . get_term_link($region->term_id, $taxonomy) . '>' . $region->name . '</a>';
+				$wrapper_region .= '<div class="region_title_bg"><a class="region_title" href=' . get_term_link($region->term_id, $taxonomy) . '>' . $region->name . '</a></div>';
 			}
 
 			while ( $fg_query->have_posts() ) {
@@ -462,7 +463,7 @@ function be_display_season_shortcode( $atts ) {
 	$seasons = '';
     $seasons .= '<ul class="season-list">';
 
-    $seasons .= '<li class="season-title"><h3>Spring</h3>';
+    $seasons .= '<li><h3 class="season-title">Spring</h3>';
     $output_spring = '<ul class="season-products">';
     foreach ($spring_product_cats as $spring_product_slug) {
     	$term = get_term_by('slug', $spring_product_slug, $taxonomy);
@@ -472,16 +473,16 @@ function be_display_season_shortcode( $atts ) {
     $output_spring .= '</ul>';
     $seasons .= $output_spring . '</li>';
 
-	$seasons .= '<li class="season-title"><h3>Summer</h3>';
+	$seasons .= '<li><h3 class="season-title">Summer</h3>';
     $seasons .= '</li>';
 
-	$seasons .= '<li class="season-title"><h3>Autumn</h3>';
+	$seasons .= '<li><h3 class="season-title">Autumn</h3>';
     $seasons .= '</li>';
 
-	$seasons .= '<li class="season-title"><h3>Winter</h3>';
+	$seasons .= '<li><h3 class="season-title">Winter</h3>';
     $seasons .= '</li>';
 
-	$seasons .= '<li class="season-title"><h3>All Year</h3>';
+	$seasons .= '<li><h3 class="season-title">All Year</h3>';
     $seasons .= '</li>';
     $seasons .= '</ul>';
     
@@ -515,7 +516,7 @@ function be_display_produce_shortcode( $atts ) {
 		foreach ($terms_2nd as $term_2nd) {
 			$wrapper_2nd_item = '<li>';
 
-			$wrapper_2nd_item .= '<a class="term-2nd-title" href=' . get_term_link($term_2nd->term_id, $taxonomy) . '>' . $term_2nd->name . '</a>';
+			$wrapper_2nd_item .= '<div class="term-2nd-title-bg"><a class="term-2nd-title" href=' . get_term_link($term_2nd->term_id, $taxonomy) . '>' . $term_2nd->name . '</a></div>';
 
 			$args = array(
 			'post_type' => 'product',

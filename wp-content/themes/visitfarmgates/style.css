@@ -89,6 +89,7 @@ template {
 
 a {
 	background-color: transparent;
+	text-decoration: none;
 }
 
 a:active,
@@ -913,6 +914,8 @@ object {
 
 .display-posts-listing {
 	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
 .display-posts-listing .listing-item:nth-child(odd) .image { 
@@ -925,6 +928,11 @@ object {
 .display-posts-listing .listing-item {
 	float: left;
 	width: 100%;
+	border: 1px solid #eee;
+    border-radius: 18px;
+    background-color: #eee;
+    margin-bottom: 0.2em;
+    padding: 0.2em 1em;
 }
 
 .display-posts-listing .image {
@@ -1121,6 +1129,17 @@ object {
 	float: left;
 }
 
+.custom-logo-link img {
+	width: 80%;
+	height: 80%;
+	top: 6px;
+    position: relative;
+}
+
+.site-branding {
+	padding: 0 0.5em;
+}
+
 .site-title {
 	float: left;
 	color: white;
@@ -1146,12 +1165,11 @@ object {
 
 /* display */
 .display-content {
-	padding: 0 1em;
+	padding: 0 1.5em 1em;
 }
 
 .term-1st-title {
-	color: #999;
-    font-style: italic;
+	color: #102542;
     margin-bottom: 0.3em;
 }
 
@@ -1161,10 +1179,16 @@ object {
     padding: 0 0.5em;
 }
 
+.term-2nd-title-bg {
+	background-color: #f4f7f6;
+	margin: 0.5em 0;
+}
+
 .term-2nd-title {
-	color: #999;
+	color: #102542;
     font-size: medium;
     text-decoration: none;
+    line-height: 2;
 }
 
 .term-post {
@@ -1175,9 +1199,9 @@ object {
 
 /* region page */
 .state_title {
-	color: #999;
-    font-style: italic;
+	color: #102542;
     margin-bottom: 0.3em;
+    font-size: x-large;
 }
 
 .regions-list {
@@ -1186,8 +1210,13 @@ object {
     padding: 0 0.5em;
 }
 
+.region_title_bg {
+	background-color: #f4f7f6;
+	margin: 0.5em 0;
+}
+
 .region_title {
-	color: #999;
+	color: #102542;
     font-size: medium;
     text-decoration: none
 }
@@ -1206,9 +1235,10 @@ object {
 }
 
 .season-title {
-	color: #999;
-    font-style: italic;
-    margin-bottom: 0.3em;
+	color: #102542;
+	background-color: #f4f7f6;
+	margin: 0.5em 0;
+	
 }
 
 .season-products {
@@ -1223,9 +1253,13 @@ object {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+.site-info {
+	background-color: #eee;
+	padding: 0.5em 0;
+}
+
 .footer-copyright {
 	text-align: center;
-	background-color: #eee;
     color: #999;
     font-size: small;
 }
@@ -1255,6 +1289,59 @@ object {
 	border: none;
     margin: 0;
     padding: 0;
+}
+
+/* index page */
+.fg-index {
+	padding: 0 1.5em;
+}
+
+.fg-index h3 {
+	color: #4c4c4c;
+}
+
+.fg-index a {
+	color: #4c4c4c;	
+}
+
+.fg-index .letter-title {
+	text-shadow: 0 1px 2px rgba(0,0,0,.25);
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+.fg-index .letter-list {
+	padding: 2px 2px 0 0;
+    margin: 0 0 5px 30px;
+}
+
+.fg-index .letter-list-item {
+	line-height: 30px;
+}
+
+@media screen and (max-width: 559px) {
+	.fg-index .letter {
+	    width: 100%;
+	    float: left;
+	    clear: both;
+}
+}
+@media screen and (max-width: 999px) {
+	.fg-index .letter {
+	    width: 50%;
+	}
+}
+@media screen and (max-width: 1199px) {
+	.fg-index .letter {
+	    width: 33%;
+	}
+}
+
+.fg-index .letter {
+    width: 25%;
+    float: left;
+    margin-bottom: 30px;
+    word-wrap: break-word!important;
 }
 
 /*--------------------------------------------------------------

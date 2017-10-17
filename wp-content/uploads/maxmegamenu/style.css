@@ -1,4 +1,4 @@
-/** Sunday 15th of October 2017 11:23:51 PM (core) **/
+/** Tuesday 17th of October 2017 01:26:02 AM (core) **/
 
 #mega-menu-wrap-menu-1, #mega-menu-wrap-menu-1 #mega-menu-menu-1, #mega-menu-wrap-menu-1 #mega-menu-menu-1 ul.mega-sub-menu, #mega-menu-wrap-menu-1 #mega-menu-menu-1 li.mega-menu-item, #mega-menu-wrap-menu-1 #mega-menu-menu-1 a.mega-menu-link {
   -moz-transition: none;
@@ -260,7 +260,7 @@
   border-bottom: 0px solid #fff;
   outline: none;
   text-decoration: none;
-  padding: 0px 10px 0px 10px;
+  padding: 0px 15px 0px 15px;
   line-height: 40px;
   font-weight: normal;
   height: 40px;
@@ -841,12 +841,12 @@
   content: '\f153';
 }
 #mega-menu-wrap-menu-1 .mega-menu-toggle .mega-toggle-block-1:after {
-  content: 'MENU';
+  content: 'Browse By';
   color: #fff;
   float: left;
 }
 #mega-menu-wrap-menu-1 .mega-menu-toggle.mega-menu-open .mega-toggle-block-1:after {
-  content: 'MENU';
+  content: 'Browse By';
 }
 #mega-menu-wrap-menu-1 {
   clear: both;
