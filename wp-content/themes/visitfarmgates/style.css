@@ -1282,7 +1282,9 @@ object {
 }
 
 .footer-mega-col-wrap {
-	background-color: #333;
+	background-image: url(http://demo.simbaroo.com/wp-content/uploads/2017/10/BACK-IMAGE.png);
+    background-size: cover;
+    background-position: bottom right;
     color: #f2c94c;
 }
 
