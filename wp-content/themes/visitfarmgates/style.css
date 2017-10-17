@@ -1029,17 +1029,38 @@ object {
     font-size: small;
 }
 
-.single-farm .single-image {
-
+.single-farm {
+	padding: 0 1em;
 }
 
-.single-farm .single-title {
-
+.single-image img {
+	width: 100%;
+    height: 250px;
+    object-fit: cover;
 }
 
 .single-farm .single-left {
 	float: left;
 	width: 240px;
+	margin: 1em 0;
+}
+
+.single-left .single-products {
+	margin: 0;
+    padding: 0 0.3em;
+    list-style: none;
+    font-size: smaller;
+    color: #333;
+}
+
+.single-left .single-product {
+
+}
+
+.single-left .single-product-title {
+	font-size: large;
+    font-weight: bold;
+    text-align: center;
 }
 
 .single-left .location {
@@ -1095,25 +1116,21 @@ object {
 	width: calc(100% - 260px);
 }
 
+.single-title {
+
+}
+
 .single-content {
 	font-size: smaller;
     color: #4a4a4a;
 }
 
-.single-right .single-products {
-
-}
-
-.single-right .single-product {
-
-}
-
-.single-right .single-product-img {
-
-}
-
-.single-farm .single-product-title {
-
+.single-photos img {
+	width: 30%;
+    height: 128px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin: 0 0.2em;
 }
 
 /*--------------------------------------------------------------
@@ -1319,24 +1336,6 @@ object {
 	line-height: 30px;
 }
 
-@media screen and (max-width: 559px) {
-	.fg-index .letter {
-	    width: 100%;
-	    float: left;
-	    clear: both;
-}
-}
-@media screen and (max-width: 999px) {
-	.fg-index .letter {
-	    width: 50%;
-	}
-}
-@media screen and (max-width: 1199px) {
-	.fg-index .letter {
-	    width: 33%;
-	}
-}
-
 .fg-index .letter {
     width: 25%;
     float: left;
@@ -1350,5 +1349,32 @@ object {
 @media (max-width: 375px) {
 	.site-title {
 		display: none;
+	}
+}
+
+@media screen and (max-width: 559px) {
+	.fg-index .letter {
+	    width: 100%;
+	    float: left;
+	    clear: both;
+	}
+
+	.single-farm .single-left,
+	.single-farm .single-right {
+		width: 100%;
+	}
+
+	.single-photos img {
+		width: 46%;
+	}
+}
+@media screen and (max-width: 999px) {
+	.fg-index .letter {
+	    width: 50%;
+	}
+}
+@media screen and (max-width: 1199px) {
+	.fg-index .letter {
+	    width: 33%;
 	}
 }
