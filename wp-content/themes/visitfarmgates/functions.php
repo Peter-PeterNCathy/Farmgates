@@ -452,38 +452,67 @@ function be_display_season_shortcode( $atts ) {
 		'all_year'			=> '',
     ), $atts );
 
+    $taxonomy = 'product_cat';
+
     $spring_product_cats = explode(',', sanitize_text_field($a['spring']));
     $summer_product_cats = explode(',', sanitize_text_field($a['summer']));
     $autumn_product_cats = explode(',', sanitize_text_field($a['autumn']));
     $winter_product_cats = explode(',', sanitize_text_field($a['winter']));
     $all_year_product_cats = explode(',', sanitize_text_field($a['all_year']));
 
-    $taxonomy = 'product_cat';
 
 	$seasons = '';
     $seasons .= '<ul class="season-list">';
 
     $seasons .= '<li><h3 class="season-title">Spring</h3>';
-    $output_spring = '<ul class="season-products">';
-    foreach ($spring_product_cats as $spring_product_slug) {
-    	$term = get_term_by('slug', $spring_product_slug, $taxonomy);
-		
-		$output_spring .= '<li><a class="season-products" href=' . get_term_link($term->term_id, $taxonomy) . '>' . $term->name . '</a></li>';
+    $output_season = '<ul class="season-products">';
+    foreach ($spring_product_cats as $product_slug) {
+    	$term = get_term_by('slug', $product_slug, $taxonomy);
+		if ($term != false)
+			$output_season .= '<li><a class="season-products" href=' . get_term_link($term->term_id, $taxonomy) . '>' . $term->name . '</a></li>';
     }
-    $output_spring .= '</ul>';
-    $seasons .= $output_spring . '</li>';
+    $output_season .= '</ul>';
+    $seasons .= $output_season . '</li>';
 
 	$seasons .= '<li><h3 class="season-title">Summer</h3>';
-    $seasons .= '</li>';
+    $output_season = '<ul class="season-products">';
+    foreach ($summer_product_cats as $product_slug) {
+    	$term = get_term_by('slug', $product_slug, $taxonomy);
+		if ($term != false)
+			$output_season .= '<li><a class="season-products" href=' . get_term_link($term->term_id, $taxonomy) . '>' . $term->name . '</a></li>';
+    }
+    $output_season .= '</ul>';
+    $seasons .= $output_season . '</li>';
 
 	$seasons .= '<li><h3 class="season-title">Autumn</h3>';
-    $seasons .= '</li>';
+    $output_season = '<ul class="season-products">';
+    foreach ($autumn_product_cats as $product_slug) {
+    	$term = get_term_by('slug', $product_slug, $taxonomy);
+		if ($term != false)
+			$output_season .= '<li><a class="season-products" href=' . get_term_link($term->term_id, $taxonomy) . '>' . $term->name . '</a></li>';
+    }
+    $output_season .= '</ul>';
+    $seasons .= $output_season . '</li>';
 
 	$seasons .= '<li><h3 class="season-title">Winter</h3>';
-    $seasons .= '</li>';
+    $output_season = '<ul class="season-products">';
+    foreach ($winter_product_cats as $product_slug) {
+    	$term = get_term_by('slug', $product_slug, $taxonomy);
+		if ($term != false)
+			$output_season .= '<li><a class="season-products" href=' . get_term_link($term->term_id, $taxonomy) . '>' . $term->name . '</a></li>';
+    }
+    $output_season .= '</ul>';
+    $seasons .= $output_season . '</li>';
 
 	$seasons .= '<li><h3 class="season-title">All Year</h3>';
-    $seasons .= '</li>';
+    $output_season = '<ul class="season-products">';
+    foreach ($all_year_product_cats as $product_slug) {
+    	$term = get_term_by('slug', $product_slug, $taxonomy);
+		if ($term != false)
+			$output_season .= '<li><a class="season-products" href=' . get_term_link($term->term_id, $taxonomy) . '>' . $term->name . '</a></li>';
+    }
+    $output_season .= '</ul>';
+    $seasons .= $output_season . '</li>';
     $seasons .= '</ul>';
     
     return '<div class="display-content">' . $header . $seasons . '</div>';

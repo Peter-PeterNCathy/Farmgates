@@ -931,9 +931,11 @@ object {
 
 .display-posts-listing .listing-item:nth-child(odd) .image { 
 	float:right; 
+	margin-left: 10px;
 }
 .display-posts-listing .listing-item:nth-child(even) .image { 
 	float:left; 
+	margin-right: 10px;
 }
 
 .display-posts-listing .listing-item {
@@ -948,6 +950,7 @@ object {
 
 .display-posts-listing .image {
 	width: 50%;
+	margin-top: 5px;
     text-align: -webkit-center;
 }
 
