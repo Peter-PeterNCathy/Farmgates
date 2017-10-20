@@ -1288,6 +1288,16 @@ object {
     color: #f2c94c;
 }
 
+.footer-mega-col-wrap div,
+.footer-mega-col-wrap a {
+	color: white;
+}
+
+.footer-mega-col-wrap div,
+.footer-mega-col-wrap span {
+	font-size: 15px;
+}
+
 .footer-links {
 	text-align: center;
 	background-color: #eee;

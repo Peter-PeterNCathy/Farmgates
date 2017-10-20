@@ -39,7 +39,7 @@
 			<div class="site-operations">
 			    <a class="site-operation" href="#">Login</a>
 			    &nbsp|&nbsp
-			    <a class="site-operation" href="#">Advertisement</a>
+			    <a class="site-operation" href=<?php echo get_site_url().'/feedback/' ?>>Contact & Feedback</a>
 			</div>
 		</div><!-- .site-branding -->
 
