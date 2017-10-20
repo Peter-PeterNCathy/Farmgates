@@ -1367,6 +1367,196 @@ object {
 }
 
 /*contact feedback page*/
+div.wpcf7 {
+    width: 68%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wpcf7 .title {
+	font-family: 'Skranji', 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 3.75em;
+    line-height: 1.7em;
+    margin-bottom: 7px;
+    color: #5b5463;
+    text-shadow: 0 2px white, 1px 3px #666;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px solid #bbb;
+}
+
+.wpcf7 .note {
+	font-size: 0.7em;
+    line-height: 1.33em;
+    font-weight: normal;
+    padding: 2px 7px;
+    margin-bottom: 10px;
+}
+
+.wpcf7 .row {
+	display: block;
+    padding: 7px 8px;
+    margin-bottom: 7px;
+}
+.wpcf7 .row:hover {
+  background: #f1f7fa;
+}
+
+.wpcf7 .row label {
+	display: inline-block;
+    font-size: 1em;
+    font-weight: bold;
+    width: 20%;
+    padding: 6px 0;
+    color: #333;
+    vertical-align: top;
+}
+
+.wpcf7 input[type="text"],
+.wpcf7 input[type="email"] {
+  display: inline-block;
+  padding: 4px 7px;
+  padding-right: 30px;
+  width: 50%;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 1.1em;
+  font-weight: normal;
+  color: #898989;
+  background-color: #f0f0f0;
+  background-image: url('images/checkmark.png');
+  background-position: 110% center;
+  background-repeat: no-repeat;
+  border: 1px solid #ccc;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.75);
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 2px rgba(25, 25, 25, 0.25) inset, -1px 1px #fff;
+  -moz-box-shadow: 0 1px 2px rgba(25, 25, 25, 0.25) inset, -1px 1px #fff;
+  box-shadow: 0 1px 2px rgba(25, 25, 25, 0.25) inset, -1px 1px #fff;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.wpcf7 textarea {
+  display: inline-block;
+  padding: 4px 7px;
+  padding-right: 15px;
+  width: 52%;
+  height: 120px;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 1.1em;
+  font-weight: normal;
+  color: #898989;
+  background-color: #f0f0f0;
+  background-image: url('images/checkmark.png');
+  background-position: 110% 4%;
+  background-repeat: no-repeat;
+  border: 1px solid #ccc;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.75);
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 4px -1px #a8a8a8 inset;
+  -moz-box-shadow: 0 1px 4px -1px #a8a8a8 inset;
+  box-shadow: 0 1px 4px -1px #a8a8a8 inset;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.wpcf7 input[type="text"]:focus,
+.wpcf7 input[type="email"]:focus,
+.wpcf7 textarea:focus {
+  width: 55%;
+  color: #545454;
+  background-color: #fff;
+  background-position: 110% center;
+  background-repeat: no-repeat;
+  border-color: #059;
+  -webkit-box-shadow: 0 1px 4px -1px #a8a8a8 inset, 0 1px rgba(255, 255, 255, 0.6), 0 0 11px rgba(70, 100, 200, 0.7);
+  -moz-box-shadow: 0 1px 4px -1px #a8a8a8 inset, 0 1px rgba(255, 255, 255, 0.6), 0 0 11px rgba(70, 100, 200, 0.7); 
+  box-shadow: 0 1px 4px -1px #a8a8a8 inset, 0 1px rgba(255, 255, 255, 0.6), 0 0 11px rgba(70, 100, 200, 0.7); 
+}
+.wpcf7 .textarea:focus { 
+  width: 60%; 
+  background-position: 110% 4%;
+}
+
+.wpcf7 input[type="text"]:valid,
+.wpcf7 input[type="email"]:valid {
+  background-color: #deecda;
+  background-position: 98% center;
+  background-repeat: no-repeat;
+  color: #7d996e;
+  border: 1px solid #95bc7d;
+}
+.wpcf7 textarea:valid {
+  background-color: #deecda;
+  background-position: 98% 4%;
+  background-repeat: no-repeat;
+  color: #7d996e;
+  border: 1px solid #95bc7d;
+}
+.wpcf7 input[type="text"]:focus:valid, 
+.wpcf7 input[type="email"]:focus:valid,
+.wpcf7 textarea:focus:valid {
+  -webkit-box-shadow: 0 1px 4px -1px #a8a8a8 inset, 0 1px rgba(255, 255, 255, 0.6), 0 0 11px rgba(120, 200, 70, 0.7);
+  -moz-box-shadow: 0 1px 4px -1px #a8a8a8 inset, 0 1px rgba(255, 255, 255, 0.6), 0 0 11px rgba(120, 200, 70, 0.7); 
+  box-shadow: 0 1px 4px -1px #a8a8a8 inset, 0 1px rgba(255, 255, 255, 0.6), 0 0 11px rgba(120, 200, 70, 0.7);  
+}
+
+.wpcf7 .center {
+	text-align: center;
+}
+
+.wpcf7 .wpcf7-submit {
+ 	padding: 3px 20px;;
+ 	cursor: pointer;
+ 	font-family: 'Oxygen', Arial, sans-serif;
+ 	font-size: 1.8em;
+ 	color: #0a528f;
+	text-shadow: 1px 1px 0 rgba(255,255,255,0.65); 
+	border-width: 1px;
+	border-style: solid;
+	border-color: #317bd6 #3784e3 #2d74d5 #3774e3;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #4581e5;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#6faefd), to(#4581e5));
+	background-image: -webkit-linear-gradient(top, #6faefd, #4581e5);
+	background-image: -moz-linear-gradient(top, #6faefd, #4581e5);
+	background-image: -ms-linear-gradient(top, #6faefd, #4581e5);
+	background-image: -o-linear-gradient(top, #6faefd, #4581e5);
+	background-image: linear-gradient(top, #6faefd, #4581e5);
+	-moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.4), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+	-webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.4), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.4), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+	-webkit-transition: all 0.3s linear;
+	-moz-transition: all 0.3s linear;
+	transition: all 0.3s linear; 
+}
+
+.wpcf7 .wpcf7-submit:hover, .wpcf7 .wpcf7-submit:focus {
+  -webkit-box-shadow: 0 0 15px rgba(70, 100, 200, 0.9);
+  -moz-box-shadow: 0 0 15px rgba(70, 100, 200, 0.9);
+  box-shadow: 0 0 15px rgba(70, 100, 200, 0.9);
+}
+ 
+.wpcf7 .wpcf7-submit:active {
+  -webkit-box-shadow: 0 0 15px rgba(70, 100, 200, 0.9), 0 1px 3px rgba(0,0,0,0.4) inset;
+  -moz-box-shadow: 0 0 15px rgba(70, 100, 200, 0.9), 0 1px 3px rgba(0,0,0,0.4) inset;
+  box-shadow: 0 0 15px rgba(70, 100, 200, 0.9), 0 1px 3px rgba(0,0,0,0.4) inset;
+}
 
 /*--------------------------------------------------------------
 # Media
@@ -1392,10 +1582,38 @@ object {
 	.single-photos img {
 		width: 46%;
 	}
+
+}
+@media screen and (max-width: 600px) {
+	.wpcf7 .title {
+		font-size: 2em;
+	}
+
+	.wpcf7 .row label {
+		width: 100%;
+	}
+
+	.wpcf7 input[type="text"],
+	.wpcf7 input[type="email"],
+	.wpcf7 textarea
+	{
+		width: 85%;
+	}
+
+	.wpcf7 input[type="text"]:focus,
+	.wpcf7 input[type="email"]:focus,
+	.wpcf7 textarea:focus
+	{
+		width: 90%;
+	}
 }
 @media screen and (max-width: 999px) {
 	.fg-index .letter {
 	    width: 50%;
+	}
+	
+	div.wpcf7 {
+    	width: 95%
 	}
 }
 @media screen and (max-width: 1199px) {
