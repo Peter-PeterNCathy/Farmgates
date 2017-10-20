@@ -877,6 +877,17 @@ object {
 /*--------------------------------------------------------------
 ## front page
 --------------------------------------------------------------*/
+.quick-search {
+	text-align: center;
+    font-size: small;
+	margin-top: 5px;
+}
+
+.quick-search-item {
+	color: #999;
+    margin-right: 10px;
+}
+
 .product_tax {
     border: 1px solid #f2f2f2;
     border-radius: 10px;
@@ -1354,6 +1365,8 @@ object {
     margin-bottom: 30px;
     word-wrap: break-word!important;
 }
+
+/*contact feedback page*/
 
 /*--------------------------------------------------------------
 # Media

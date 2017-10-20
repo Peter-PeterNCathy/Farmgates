@@ -604,7 +604,6 @@ function vf_display_products( $term_id ) {
 	echo '</ul>';
 }
 
-
 /**
  * Implement the Custom Header feature.
  */
