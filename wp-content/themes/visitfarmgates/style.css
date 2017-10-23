@@ -941,11 +941,9 @@ object {
 .display-posts-listing .listing-item {
 	float: left;
 	width: 100%;
-	border: 1px solid #eee;
-    border-radius: 18px;
-    background-color: #eee;
-    margin-bottom: 0.2em;
+	border-bottom: 1px solid #eee;
     padding: 0.2em 1em;
+	background-color: white;
 }
 
 .display-posts-listing .image {
@@ -1285,13 +1283,13 @@ object {
 # Footer
 --------------------------------------------------------------*/
 .site-info {
-	background-color: #eee;
+	background-color: #f2c94c;
 	padding: 0.5em 0;
 }
 
 .footer-copyright {
 	text-align: center;
-    color: #999;
+    color: #666;
     font-size: small;
 }
 
@@ -1314,14 +1312,14 @@ object {
 
 .footer-links {
 	text-align: center;
-	background-color: #eee;
+	background-color: #f2c94c;
     color: #999;
     font-size: small;
-	border-right: 1px solid #d6d6d6;
+	border-right: 1px solid #666;
 }
 
 .footer-links .footer-link {
-	border-right: 1px solid #d6d6d6;
+	border-right: 1px solid #666;
 	margin-right: 10px;
     margin-top: 3px;
     padding-right: 12px;
@@ -1559,6 +1557,40 @@ div.wpcf7 {
   -webkit-box-shadow: 0 0 15px rgba(70, 100, 200, 0.9), 0 1px 3px rgba(0,0,0,0.4) inset;
   -moz-box-shadow: 0 0 15px rgba(70, 100, 200, 0.9), 0 1px 3px rgba(0,0,0,0.4) inset;
   box-shadow: 0 0 15px rgba(70, 100, 200, 0.9), 0 1px 3px rgba(0,0,0,0.4) inset;
+}
+
+#gmap {
+    height: 400px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.gm-style-iw > div:last-child {
+	display: none;
+}
+
+.infowindow {
+
+}
+
+.infowin-title {
+}
+
+.infowin-content {
+
+}
+
+.infowin-addr {
+	border-bottom: 1px solid #ccc;
+    padding-bottom: 7px;
+    margin: 0;
+    color: #666;
+}
+
+.infowin-link {
+	padding: 0px 7px 0px 1px;
 }
 
 /*--------------------------------------------------------------
